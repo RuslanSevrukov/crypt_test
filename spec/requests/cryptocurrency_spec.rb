@@ -1,7 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe "Cryptocurrencies", type: :request do
-  describe "GET /index" do
-    pending "add some examples (or delete) #{__FILE__}"
+RSpec.describe CryptocurrencyController, type: :request do
+  it "check specific_info" do
+    get "/specific_info"
+    expect(@response).to have_http_status(200)
   end
 end
