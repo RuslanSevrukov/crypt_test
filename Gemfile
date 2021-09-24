@@ -10,6 +10,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 gem 'httparty'
 gem 'json'
 gem 'rspec-rails'
+gem 'dotenv-rails'
 # gem 'rack-cors'
 
 group :development, :test do
