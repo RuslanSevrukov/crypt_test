@@ -1,3 +1,6 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  get 'full_info', to: 'cryptocurrency#full_info'
+  get 'specific_info', to: 'cryptocurrency#specific_info'
+  get 'convert_cc_to_fiat', to: 'cryptocurrency#convert_cc_to_fiat'
+  get 'convert_cc_to_cc', to: 'cryptocurrency#convert_cc_to_cc'
 end

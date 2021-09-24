@@ -1,12 +1,9 @@
-module RequesterHelper
+class RequesterHelper
   include HTTParty
-  base_uri 'api.nomics.com/v1'
 
-  headers = {
-    key: ENV("NOMICS_KEY"),
-  }.freeze
+  @@key = ENV["NOMICS_KEY"].freeze
   
-  all_fields = [
+  @@all_fields = [
     "id",
     "original_symbol",
     "name",
@@ -31,27 +28,28 @@ module RequesterHelper
     "used_for_pricing",
   ].freeze
 
-  def currencies tickers, fields=all_fields
+  def self.currencies tickers, fields=all_fields
     JSON.parse(HTTParty.get(
-      "/currencies", 
-      headers: headers,
+      "https://api.nomics.com/v1/currencies",
       query: {
-        ids: tickers,
+        key: @@key,
+        ids: (tickers || []).join(','),    
         attributes: fields,
       },
     ).body)
   end
 
-  def fiat_price cc_ticker, fiat_ticker
+  def self.fiat_price cc_ticker, fiat_ticker
+    sleep 1 # because of Nomics free plan: 1 request per second only :(
     JSON.parse(
       HTTParty.get(
-        "/ticker", 
-        headers: headers,
+        "https://api.nomics.com/v1/currencies/ticker", 
         query: {
-          ids: [cc_ticker],
+          key: @@key,
+          ids: cc_ticker,
           convert: fiat_ticker,
         },
       ).body
-    ).price.to_f
+    ).first["price"].to_f
   end
 end
