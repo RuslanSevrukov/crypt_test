@@ -7,10 +7,9 @@ gem 'rails', '~> 6.1.4', '>= 6.1.4.1'
 gem 'sqlite3', '~> 1.4'
 gem 'puma', '~> 5.0'
 gem 'bootsnap', '>= 1.4.4', require: false
-gem 'uri'
 gem 'httparty'
 gem 'json'
-gem 'rspec'
+gem 'rspec-rails'
 # gem 'rack-cors'
 
 group :development, :test do
