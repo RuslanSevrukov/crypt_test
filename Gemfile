@@ -8,9 +8,9 @@ gem 'sqlite3', '~> 1.4'
 gem 'puma', '~> 5.0'
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'uri'
-gem 'net/http' 
+gem 'httparty'
 gem 'json'
-gem 'rspec/autorun'
+gem 'rspec'
 # gem 'rack-cors'
 
 group :development, :test do
